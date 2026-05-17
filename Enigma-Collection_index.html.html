@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>ENIGMA Collection | Oil-Based Elixirs</title>
+  <!-- Google Fonts: Minimal & Elegant -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 (free icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #FCF9F5;  /* warm off-white, luxurious base */
+      color: #1E1B1B;
+      scroll-behavior: smooth;
+    }
+
+    /* custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #E8E2D9;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #A68A6B;
+      border-radius: 12px;
+    }
+
+    /* minimalist container */
+    .container {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* header / navigation */
+    .header {
+      padding: 28px 0 20px;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .logo h1 {
+      font-size: 1.9rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #2C2A28 0%, #5F4C3B 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+    .logo p {
+      font-size: 0.75rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #8B7A6B;
+      font-weight: 400;
+      margin-top: 4px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      font-weight: 500;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #2b2a28;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover {
+      color: #B48C5C;
+    }
+    /* hero section */
+    .hero {
+      padding: 70px 0 50px;
+      text-align: center;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .hero h2 {
+      font-size: 3rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      color: #1F1B17;
+      line-height: 1.2;
+    }
+    .hero p {
+      font-size: 1.125rem;
+      color: #4E443C;
+      margin-top: 18px;
+      font-weight: 400;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: #EAE3DB;
+      padding: 6px 18px;
+      border-radius: 60px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.8px;
+      color: #6A4E2E;
+      margin-bottom: 24px;
+    }
+    /* interactive fragrance grid */
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 500;
+      margin: 56px 0 28px 0;
+      letter-spacing: -0.3px;
+      border-left: 4px solid #C5A47A;
+      padding-left: 18px;
+    }
+    .fragrance-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 32px;
+      margin-bottom: 60px;
+    }
+    /* card design – minimal luxury */
+    .perfume-card {
+      background: #FFFFFF;
+      border-radius: 28px;
+      padding: 28px 20px 24px;
+      transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
+      cursor: pointer;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.02), 0 1px 2px rgba(0,0,0,0.02);
+      border: 1px solid #F0EBE4;
+      backdrop-filter: blur(0px);
+    }
+    .perfume-card:hover {
+      transform: translateY(-6px);
+      border-color: #DDCFC0;
+      box-shadow: 0 20px 30px -12px rgba(0,0,0,0.08);
+      background: #FEFCF9;
+    }
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 16px;
+    }
+    .brand-badge {
+      font-size: 0.7rem;
+      font-weight: 600;
+      background: #F3EFEA;
+      padding: 4px 10px;
+      border-radius: 40px;
+      color: #846C50;
+      letter-spacing: 0.4px;
+    }
+    .sku {
+      font-size: 0.7rem;
+      color: #BBAA99;
+      font-family: monospace;
+    }
+    .perfume-name {
+      font-size: 1.5rem;
+      font-weight: 600;
+      letter-spacing: -0.3px;
+      margin: 12px 0 8px 0;
+      color: #221F1C;
+    }
+    .designer {
+      font-size: 0.8rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      color: #B48A64;
+      margin-bottom: 12px;
+    }
+    .notes {
+      font-size: 0.85rem;
+      line-height: 1.4;
+      color: #5A5249;
+      margin: 16px 0 18px;
+      border-top: 1px dashed #EADFCB;
+      padding-top: 14px;
+    }
+    .action-line {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 8px;
+    }
+    .price-tag {
+      font-weight: 600;
+      font-size: 1rem;
+      background: #F5EFE7;
+      padding: 6px 12px;
+      border-radius: 80px;
+      color: #4C3A28;
+    }
+    .shop-icon {
+      color: #A77548;
+      font-size: 1.2rem;
+      transition: 0.2s;
+    }
+    .perfume-card:hover .shop-icon {
+      transform: translateX(5px);
+      color: #7A5A3A;
+    }
+    /* interactive tooltip / quickview simulation */
+    .card-quick {
+      cursor: pointer;
+    }
+    /* cta banner */
+    .cta-banner {
+      background: linear-gradient(112deg, #2A241E 0%, #1E1915 100%);
+      border-radius: 42px;
+      padding: 52px 48px;
+      margin: 50px 0 70px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 32px;
+      color: white;
+    }
+    .cta-text h3 {
+      font-size: 1.8rem;
+      font-weight: 500;
+      letter-spacing: -0.3px;
+    }
+    .cta-text p {
+      opacity: 0.75;
+      margin-top: 12px;
+      font-weight: 400;
+    }
+    .cta-button {
+      background: #C7A16B;
+      border: none;
+      padding: 14px 32px;
+      font-weight: 600;
+      font-size: 1rem;
+      border-radius: 60px;
+      color: #1F1B17;
+      cursor: pointer;
+      transition: 0.2s;
+      font-family: inherit;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .cta-button:hover {
+      background: #DFB889;
+      transform: scale(0.98);
+    }
+    /* footer */
+    .footer {
+      border-top: 1px solid #E3DBD2;
+      padding: 40px 0 48px;
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+      font-size: 0.8rem;
+      color: #7B6E60;
+    }
+    .social-icons i {
+      font-size: 1.2rem;
+      margin-left: 18px;
+      color: #9F8A74;
+      transition: color 0.2s;
+      cursor: pointer;
+    }
+    .social-icons i:hover {
+      color: #C09A6C;
+    }
+    /* alert / toasts */
+    .toast-msg {
+      position: fixed;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #25201A;
+      color: #F1E9E0;
+      padding: 12px 26px;
+      border-radius: 100px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      z-index: 1000;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      opacity: 0;
+      transition: opacity 0.2s;
+      pointer-events: none;
+      white-space: nowrap;
+    }
+    @media (max-width: 760px) {
+      .container {
+        padding: 0 20px;
+      }
+      .hero h2 {
+        font-size: 2.2rem;
+      }
+      .cta-banner {
+        flex-direction: column;
+        text-align: center;
+        padding: 36px 28px;
+      }
+      .toast-msg {
+        white-space: normal;
+        text-align: center;
+        width: 80%;
+        font-size: 0.75rem;
+      }
+    }
+    .filter-pill {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+    }
+    .pill {
+      background: #F1EBE3;
+      padding: 8px 18px;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      color: #4A3E33;
+    }
+    .pill.active {
+      background: #C1A177;
+      color: white;
+    }
+    .pill:hover {
+      background: #D9CABA;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <div class="logo">
+      <h1>ENIGMA Collection</h1>
+      <p>OIL-BASED ELIXIRS · SCENT FROM FRANCE</p>
+    </div>
+    <div class="nav-links">
+      <a href="#">FRAGRANCES</a>
+      <a href="#">THE ELIXIR</a>
+      <a href="#">RITUAL</a>
+    </div>
+  </div>
+
+  <div class="hero">
+    <div class="hero-badge">✦ ARTISANAL OIL FRAGRANCES ✦</div>
+    <h2>Where mystery meets<br>olfactory elegance.</h2>
+    <p>40% perfume oil concentration · Alcohol denat (50%) · Fixative blend (10%)<br> Inspired by niche French perfumery, handcrafted in UAE.</p>
+  </div>
+
+  <!-- filter section (minimal interactive) -->
+  <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+    <div class="section-title">Signature Elixirs</div>
+    <div class="filter-pill" id="filterGroup">
+      <span class="pill active" data-filter="all">All Creations</span>
+      <span class="pill" data-filter="Fresh">🌊 Fresh</span>
+      <span class="pill" data-filter="Sweet">🍯 Sweet</span>
+      <span class="pill" data-filter="Long-lasting">⏳ Long-lasting</span>
+    </div>
+  </div>
+
+  <!-- dynamic grid from inventory list -->
+  <div class="fragrance-grid" id="fragranceGrid"></div>
+
+  <!-- convincing call to action -->
+  <div class="cta-banner">
+    <div class="cta-text">
+      <h3>Limited batch — oil based intensity</h3>
+      <p>Spray on pulse points, let the scent evolve. 50 ml / 1.7 fl. oz — Handcrafted in UAE.</p>
+    </div>
+    <button class="cta-button" id="exploreCta"><i class="fas fa-shopping-bag" style="margin-right: 8px;"></i> DISCOVER COLLECTION</button>
+  </div>
+
+  <div class="footer">
+    <div>© 2025 ENIGMA Scents & Co. — Handcrafted in UAE | Scent from France</div>
+    <div class="social-icons">
+      <i class="fab fa-instagram"></i>
+      <i class="fab fa-facebook-f"></i>
+      <i class="fab fa-twitter"></i>
+      <span style="margin-left: 12px;">IG: enigmacollections.ae</span>
+    </div>
+  </div>
+</div>
+<div id="toastMsg" class="toast-msg">✨ Added to your sensory cart · ENIGMA elixir</div>
+
+<script>
+  // ----------------------------------------------
+  // DATA BUILT FROM INVENTORY LIST PDF (items from page 2)
+  // preserving brand, name & description notes based on provided data
+  // extended with elegant notes & pricing uniformity to reflect luxury positioning
+  // ----------------------------------------------
+  const inventoryRaw = [
+    { sku: "50", brand: "Dior", name: "Sauvage", forWhom: "For &amp;m", scentDesc: "Fresh / Loud confidence", profile: "Fresh" },
+    { sku: "51", brand: "Paco Robanne", name: "One Million", forWhom: "For &amp;m", scentDesc: "Sweet / Long-lasting", profile: "Sweet" },
+    { sku: "52", brand: "Clinique", name: "Happy (M)", forWhom: "For &amp;m", scentDesc: "Fresh / Light", profile: "Fresh" },
+    { sku: "53", brand: "Hugo Boss", name: "Hugo Boss", forWhom: "For &amp;m", scentDesc: "Fresh / Youthful", profile: "Fresh" },
+    { sku: "54", brand: "Mont Blanc", name: "Legend", forWhom: "For &amp;m", scentDesc: "Sweet / Classy", profile: "Sweet" },
+    { sku: "55", brand: "Davidoff", name: "Cool Water", forWhom: "For &amp;m", scentDesc: "Fresh", profile: "Fresh" },
+    { sku: "56", brand: "Polo Sport", name: "Polo Sport", forWhom: "For &amp;m", scentDesc: "Fresh", profile: "Fresh" },
+    { sku: "57", brand: "Creed", name: "Aventus For Him", forWhom: "For &amp;m", scentDesc: "Fresh / Long-lasting", profile: "Long-lasting" },
+    { sku: "58", brand: "Eba Pura", name: "Xeroff", forWhom: "For &amp;m", scentDesc: "Sweet / Long-lasting", profile: "Long-lasting" },
+    { sku: "59", brand: "Paco Robanne", name: "Invictus", forWhom: "For &amp;m", scentDesc: "Fresh / Sweet", profile: "Sweet" },
+    { sku: "60", brand: "Lacoste", name: "White Blanc", forWhom: "For &amp;m", scentDesc: "Fresh", profile: "Fresh" },
+    { sku: "61", brand: "Tom Ford", name: "Oud Wood", forWhom: "For &amp;m", scentDesc: "Long-lasting", profile: "Long-lasting" },
+    { sku: "62", brand: "Chanel", name: "de' Bleu", forWhom: "For &amp;m", scentDesc: "Fresh / Long-lasting", profile: "Long-lasting" },
+    { sku: "63", brand: "Dior", name: "Fahrenheit", forWhom: "For &amp;m", scentDesc: "Long-lasting", profile: "Long-lasting" },
+    { sku: "64", brand: "Armani", name: "Aqua", forWhom: "For &amp;m", scentDesc: "Fresh", profile: "Fresh" },
+    { sku: "65", brand: "Ralph Lauren", name: "Polo Blue", forWhom: "For &amp;m", scentDesc: "Clean Cut", profile: "Fresh" },
+    { sku: "66", brand: "Versace", name: "Erros Men", forWhom: "For &amp;m", scentDesc: "Night out Confidence", profile: "Long-lasting" }
+  ];
+
+  // enrich with more story, notes and price (luxury positioning)
+  const perfumeCollection = inventoryRaw.map(item => {
+    let detailedNotes = "";
+    let price = "49";
+    // build elegant notes per profile
+    if (item.profile === "Fresh") detailedNotes = "Bergamot, sea breeze, white musk · crisp & invigorating";
+    else if (item.profile === "Sweet") detailedNotes = "Vanilla, amber, tonka bean · warm & seductive";
+    else if (item.profile === "Long-lasting") detailedNotes = "Oud, leather, smoky woods · profound tenacity";
+    else detailedNotes = "Aromatic signature · French blend";
+    
+    // add extra special touch to Creed, Tom Ford, etc premium
+    if (item.name.toLowerCase().includes("aventus")) detailedNotes = "Pineapple, birch, blackcurrant · iconic longevity";
+    if (item.name.toLowerCase().includes("oud wood")) detailedNotes = "Rare oud, sandalwood, cardamom · mysterious depth";
+    if (item.name.toLowerCase().includes("sauvage")) detailedNotes = "Calabrian bergamot, ambroxan, spicy elemi · raw elegance";
+    if (item.name.toLowerCase().includes("one million")) detailedNotes = "Blood mandarin, cinnamon, leather · bold & opulent";
+    
+    return {
+      ...item,
+      notes: detailedNotes,
+      price: `$${price}`,
+      fullName: `${item.name} by ${item.brand}`,
+      scentTag: item.scentDesc
+    };
+  });
+
+  // render dynamic grid with filter logic
+  const gridContainer = document.getElementById('fragranceGrid');
+  let activeFilter = "all";
+
+  function renderCards() {
+    let filtered = [...perfumeCollection];
+    if (activeFilter !== "all") {
+      filtered = perfumeCollection.filter(p => p.profile === activeFilter);
+    }
+    if (filtered.length === 0) {
+      gridContainer.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:48px;">No fragrances in this mood · explore all creations</div>`;
+      return;
+    }
+    const html = filtered.map(p => `
+      <div class="perfume-card card-quick" data-sku="${p.sku}" data-name="${p.name}">
+        <div class="card-header">
+          <span class="brand-badge">${p.brand}</span>
+          <span class="sku">#${p.sku}</span>
+        </div>
+        <div class="perfume-name">${p.name}</div>
+        <div class="designer">${p.brand} · OIL ELIXIR</div>
+        <div class="notes"><i class="fas fa-leaf" style="font-size:0.7rem; margin-right:6px; color:#B4845A;"></i> ${p.notes}</div>
+        <div class="action-line">
+          <span class="price-tag">${p.price} <span style="font-weight:normal;">50ml</span></span>
+          <span class="shop-icon"><i class="fas fa-arrow-right"></i></span>
+        </div>
+        <div style="font-size:0.7rem; margin-top:12px; color:#A58D74;">${p.scentTag}</div>
+      </div>
+    `).join('');
+    gridContainer.innerHTML = html;
+    attachCardEvents();
+  }
+
+  function attachCardEvents() {
+    document.querySelectorAll('.perfume-card').forEach(card => {
+      card.addEventListener('click', (e) => {
+        // do not trigger if click on interactive inner text? fine anyway.
+        const nameElem = card.querySelector('.perfume-name')?.innerText || "this scent";
+        showToast(`🖤 ${nameElem} · added to your discovery set. Free shipping over $75`);
+        // subtle haptic luxury simulation
+        card.style.transform = "scale(0.99)";
+        setTimeout(() => { card.style.transform = ""; }, 150);
+      });
+    });
+  }
+
+  function showToast(message) {
+    const toast = document.getElementById('toastMsg');
+    toast.innerText = message;
+    toast.style.opacity = "1";
+    setTimeout(() => {
+      toast.style.opacity = "0";
+    }, 2100);
+  }
+
+  // filter pills event
+  const pills = document.querySelectorAll('.pill');
+  pills.forEach(pill => {
+    pill.addEventListener('click', function() {
+      pills.forEach(p => p.classList.remove('active'));
+      this.classList.add('active');
+      const filterVal = this.getAttribute('data-filter');
+      activeFilter = filterVal;
+      renderCards();
+      // smooth scroll slightly
+      window.scrollBy({ top: 80, behavior: 'smooth' });
+    });
+  });
+
+  // cta button interactive: show all products and scroll to grid
+  const ctaBtn = document.getElementById('exploreCta');
+  if(ctaBtn) {
+    ctaBtn.addEventListener('click', () => {
+      // reset filter to all
+      activeFilter = "all";
+      const allPill = document.querySelector('.pill[data-filter="all"]');
+      if(allPill) {
+        pills.forEach(p => p.classList.remove('active'));
+        allPill.classList.add('active');
+      }
+      renderCards();
+      const gridSection = document.getElementById('fragranceGrid');
+      if(gridSection) {
+        gridSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+      showToast("✨ ENIGMA full collection revealed · French-UAE allure");
+    });
+  }
+
+  // initial render
+  renderCards();
+
+  // social hover / mock interaction for footer icons
+  const socialIcons = document.querySelectorAll('.social-icons i');
+  socialIcons.forEach(icon => {
+    icon.addEventListener('click', () => {
+      showToast("Follow ENIGMA Collection for exclusive drops & rituals");
+    });
+  });
+  
+  // add micro interaction: directions / luxurious afterthought
+  const styleInject = document.createElement('style');
+  styleInject.textContent = `
+    .perfume-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 28px;
+      pointer-events: none;
+      transition: box-shadow 0.2s;
+    }
+    .perfume-card {
+      position: relative;
+    }
+  `;
+  document.head.appendChild(styleInject);
+</script>
+</body>
+</html>
