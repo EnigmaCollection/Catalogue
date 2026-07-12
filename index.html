@@ -1,0 +1,1416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Enigma Collections · Dubai</title>
+    <style>
+        /* ----- reset & variables ----- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --ink: #0b0b0c;
+            --panel: #151417;
+            --panel-2: #1c1a1f;
+            --hair: #332f30;
+            --gold: #c9a15c;
+            --gold-soft: #a98a52;
+            --cream: #f1e9dc;
+            --grey: #9c968c;
+            --rose: #b98499;
+            --steel: #66787f;
+        }
+
+        body {
+            background: var(--ink);
+            color: var(--cream);
+            font-family: 'Jost', sans-serif;
+            font-weight: 300;
+            line-height: 1.5;
+            padding: 0 1.5rem;
+        }
+
+        .container {
+            max-width: 1360px;
+            margin: 0 auto;
+        }
+
+        /* ----- typography & utilities ----- */
+        .serif {
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .gold {
+            color: var(--gold);
+        }
+        .rose {
+            color: var(--rose);
+        }
+        .steel {
+            color: var(--steel);
+        }
+        .grey {
+            color: var(--grey);
+        }
+        .tracked {
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            font-weight: 400;
+            font-size: 0.7rem;
+        }
+
+        /* ----- sprig SVG (reusable) ----- */
+        .sprig {
+            opacity: 0.06;
+            display: block;
+            width: 100px;
+            height: auto;
+            margin: 0.25rem 0 0.5rem;
+        }
+        .sprig-sm {
+            width: 48px;
+            opacity: 0.2;
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 0.5rem;
+        }
+        .sprig-divider {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .sprig-divider svg {
+            width: 60px;
+            opacity: 0.15;
+        }
+
+        /* ----- hero ----- */
+        .hero {
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            padding: 2.5rem 1rem 1.5rem;
+            border-bottom: 1px solid rgba(201, 161, 92, 0.08);
+            margin-bottom: 0.5rem;
+        }
+        .hero-glow {
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70%;
+            height: 60%;
+            background: radial-gradient(ellipse at center, rgba(201, 161, 92, 0.10) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .hero .sprig-bg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.06;
+            width: 480px;
+            pointer-events: none;
+        }
+        .hero-eyebrow {
+            font-size: 0.8rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--grey);
+            margin-bottom: 0.25rem;
+            position: relative;
+        }
+        .hero-wordmark {
+            font-size: clamp(3.6rem, 14vw, 7rem);
+            font-weight: 300;
+            line-height: 0.95;
+            letter-spacing: -0.02em;
+            position: relative;
+        }
+        .hero-wordmark .gold {
+            font-weight: 600;
+            letter-spacing: 0.1em;
+        }
+        .hero-sub {
+            font-size: 1.2rem;
+            font-weight: 300;
+            color: var(--grey);
+            letter-spacing: 0.2em;
+            margin-top: 0.2rem;
+        }
+        .hero-tagline {
+            font-size: 1.4rem;
+            font-style: italic;
+            font-weight: 300;
+            margin: 0.6rem 0 0.3rem;
+            max-width: 600px;
+            color: var(--cream);
+        }
+        .hero-meta {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.5rem 1.8rem;
+            font-size: 0.75rem;
+            letter-spacing: 0.08em;
+            color: var(--grey);
+            margin-top: 1rem;
+            border-top: 1px solid rgba(201, 161, 92, 0.08);
+            padding-top: 1rem;
+        }
+        .hero-meta a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+        .hero-meta a:hover {
+            text-decoration: underline;
+        }
+
+        /* ----- intro ----- */
+        .intro {
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            padding: 1.5rem 0 2rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(201, 161, 92, 0.06);
+        }
+        .intro .lead {
+            font-size: 1.5rem;
+            font-style: italic;
+            font-weight: 300;
+            color: var(--gold);
+            line-height: 1.4;
+        }
+        .intro .body-text {
+            font-size: 1rem;
+            color: #d6cdc1;
+            margin-top: 0.8rem;
+            line-height: 1.8;
+        }
+
+        /* ----- sticky filter ----- */
+        .filter-sticky {
+            position: sticky;
+            top: 0;
+            z-index: 30;
+            background: rgba(11, 11, 12, 0.92);
+            backdrop-filter: blur(6px);
+            padding: 0.6rem 0 0.4rem;
+            border-bottom: 1px solid rgba(201, 161, 92, 0.1);
+            margin-bottom: 1.5rem;
+        }
+        .filter-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.3rem 0.8rem;
+        }
+        .filter-row+.filter-row {
+            margin-top: 0.4rem;
+            border-top: 1px solid rgba(201, 161, 92, 0.06);
+            padding-top: 0.4rem;
+        }
+        .filter-btn {
+            background: transparent;
+            border: none;
+            color: var(--grey);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-weight: 400;
+            padding: 0.1rem 0.6rem;
+            cursor: pointer;
+            transition: color 0.2s, border-color 0.2s;
+            border-bottom: 2px solid transparent;
+        }
+        .filter-btn:hover {
+            color: var(--cream);
+        }
+        .filter-btn.active {
+            color: var(--gold);
+            border-bottom-color: var(--gold);
+        }
+        .filter-label {
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--grey);
+            margin-right: 0.2rem;
+        }
+        .filter-select {
+            background: var(--panel);
+            color: var(--cream);
+            border: 1px solid var(--hair);
+            border-radius: 4px;
+            padding: 0.2rem 1.2rem 0.2rem 0.6rem;
+            font-family: 'Jost', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 300;
+            cursor: pointer;
+            transition: border 0.2s;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23c9a15c' stroke-width='1' fill='none'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 0.4rem center;
+            background-size: 10px;
+        }
+        .filter-select:hover,
+        .filter-select:focus {
+            border-color: var(--gold);
+            outline: none;
+        }
+
+        /* ----- catalogue sections ----- */
+        .catalogue-section {
+            padding: 1.2rem 0 2.2rem;
+            border-bottom: 1px solid rgba(201, 161, 92, 0.05);
+            transition: opacity 0.25s ease;
+        }
+        .catalogue-section.hidden-section {
+            display: none !important;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 0.3rem 1rem;
+            margin-bottom: 1.2rem;
+        }
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 300;
+            letter-spacing: 0.05em;
+        }
+        .section-count {
+            font-size: 0.75rem;
+            color: var(--grey);
+            letter-spacing: 0.15em;
+            font-weight: 300;
+        }
+
+        /* grid */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 0.5rem;
+        }
+
+        /* product card */
+        .product-card {
+            background: var(--panel);
+            border: 1px solid var(--hair);
+            padding: 1.2rem 1.2rem 1rem;
+            border-radius: 2px;
+            transition: background 0.2s, border-color 0.2s;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        .product-card:hover {
+            background: var(--panel-2);
+            border-color: rgba(201, 161, 92, 0.25);
+        }
+        .card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+        .card-sku {
+            font-size: 0.65rem;
+            letter-spacing: 0.15em;
+            color: var(--grey);
+        }
+        .card-badge {
+            font-size: 0.55rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            background: rgba(201, 161, 92, 0.08);
+            padding: 0.1rem 0.6rem;
+            border-radius: 20px;
+            border: 1px solid rgba(201, 161, 92, 0.08);
+            color: var(--gold);
+        }
+        .card-badge.rose-badge {
+            color: var(--rose);
+            border-color: rgba(185, 132, 153, 0.2);
+        }
+        .card-badge.steel-badge {
+            color: var(--steel);
+            border-color: rgba(102, 120, 127, 0.2);
+        }
+        .card-inspired {
+            font-size: 0.6rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gold);
+            font-weight: 400;
+            margin-top: 0.2rem;
+        }
+        .card-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 400;
+            line-height: 1.2;
+            margin: 0.1rem 0 0.1rem;
+        }
+        .card-note {
+            font-style: italic;
+            font-size: 0.85rem;
+            color: #d6cdc1;
+            font-weight: 300;
+            margin: 0.2rem 0 0.4rem;
+            flex: 1;
+        }
+        .card-divider {
+            width: 30px;
+            height: 1px;
+            background: var(--gold);
+            opacity: 0.3;
+            margin: 0.4rem 0 0.3rem;
+        }
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 0.2rem;
+            flex-wrap: wrap;
+            gap: 0.3rem;
+        }
+        .card-price {
+            font-size: 0.7rem;
+            color: var(--grey);
+            letter-spacing: 0.03em;
+        }
+        .card-price span {
+            color: var(--gold);
+            font-weight: 400;
+        }
+        .card-actions {
+            display: flex;
+            gap: 0.3rem;
+            align-items: center;
+        }
+        .size-select {
+            background: var(--ink);
+            color: var(--cream);
+            border: 1px solid var(--hair);
+            border-radius: 4px;
+            padding: 0.15rem 0.3rem;
+            font-family: 'Jost', sans-serif;
+            font-size: 0.55rem;
+            font-weight: 300;
+            cursor: pointer;
+        }
+        .size-select:focus {
+            border-color: var(--gold);
+            outline: none;
+        }
+        .add-btn {
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            font-family: 'Jost', sans-serif;
+            font-weight: 400;
+            font-size: 0.6rem;
+            letter-spacing: 0.1em;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .add-btn:hover {
+            background: var(--gold);
+            color: var(--ink);
+        }
+        .whatsapp-order-btn {
+            background: #25D366;
+            border: none;
+            color: white;
+            font-family: 'Jost', sans-serif;
+            font-weight: 400;
+            font-size: 0.6rem;
+            letter-spacing: 0.05em;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: opacity 0.2s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .whatsapp-order-btn:hover {
+            opacity: 0.85;
+        }
+
+        /* ----- bespoke box ----- */
+        .bespoke {
+            max-width: 640px;
+            margin: 2.5rem auto 1.5rem;
+            padding: 1.6rem 2rem;
+            border: 1px solid var(--hair);
+            position: relative;
+            text-align: center;
+            cursor: pointer;
+            transition: border-color 0.3s;
+        }
+        .bespoke:hover {
+            border-color: var(--gold);
+        }
+        .bespoke::before,
+        .bespoke::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-color: var(--gold);
+            border-style: solid;
+            border-width: 0;
+            opacity: 0.3;
+        }
+        .bespoke::before {
+            top: 6px;
+            left: 6px;
+            border-top-width: 1px;
+            border-left-width: 1px;
+        }
+        .bespoke::after {
+            bottom: 6px;
+            right: 6px;
+            border-bottom-width: 1px;
+            border-right-width: 1px;
+        }
+        .bespoke .label {
+            font-size: 0.6rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--grey);
+        }
+        .bespoke p {
+            font-style: italic;
+            font-size: 1.1rem;
+            color: var(--cream);
+            margin-top: 0.2rem;
+        }
+
+        /* ----- footer ----- */
+        .footer {
+            padding: 2rem 0 1.5rem;
+            margin-top: 0.5rem;
+            border-top: 1px solid rgba(201, 161, 92, 0.06);
+            text-align: center;
+        }
+        .footer .sprig {
+            margin: 0 auto 0.5rem;
+            opacity: 0.08;
+        }
+        .footer h3 {
+            font-size: 1.8rem;
+            font-weight: 300;
+            letter-spacing: 0.1em;
+        }
+        .footer .sub {
+            font-size: 0.8rem;
+            color: var(--grey);
+            margin: 0.2rem 0 0.5rem;
+        }
+        .footer .handle {
+            display: inline-block;
+            border: 1px solid rgba(201, 161, 92, 0.15);
+            padding: 0.3rem 1.2rem;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            color: var(--cream);
+        }
+        .footer .handle a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+        .footer .handle a:hover {
+            text-decoration: underline;
+        }
+
+        /* ----- whatsapp overlay (option 2) ----- */
+        .whatsapp-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(11, 11, 12, 0.94);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+            padding: 20px;
+            backdrop-filter: blur(8px);
+            animation: fadeIn 0.4s ease;
+        }
+        .whatsapp-overlay.hidden {
+            display: none;
+        }
+        .whatsapp-modal {
+            background: var(--panel);
+            border: 1px solid var(--gold);
+            border-radius: 12px;
+            padding: 2.2rem 2rem 2rem;
+            max-width: 400px;
+            text-align: center;
+            width: 100%;
+        }
+        .whatsapp-modal h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            color: var(--gold);
+            margin-bottom: 6px;
+        }
+        .whatsapp-modal p {
+            color: var(--grey);
+            font-size: 0.95rem;
+            margin-bottom: 1.2rem;
+            line-height: 1.6;
+        }
+        .whatsapp-btn-lg {
+            display: inline-block;
+            background: #25D366;
+            color: white;
+            padding: 12px 36px;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: transform 0.2s;
+            border: none;
+            cursor: pointer;
+            font-family: 'Jost', sans-serif;
+            letter-spacing: 0.02em;
+        }
+        .whatsapp-btn-lg:hover {
+            transform: scale(1.04);
+        }
+        .skip-link {
+            display: inline-block;
+            margin-top: 14px;
+            color: var(--grey);
+            font-size: 0.8rem;
+            text-decoration: underline;
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-family: 'Jost', sans-serif;
+        }
+        .skip-link:hover {
+            color: var(--cream);
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* responsive */
+        @media (max-width: 600px) {
+            body {
+                padding: 0 0.8rem;
+            }
+            .hero-wordmark {
+                font-size: 2.8rem;
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+            .card-grid {
+                grid-template-columns: 1fr;
+                gap: 0.4rem;
+            }
+            .filter-btn {
+                font-size: 1.1rem;
+                padding: 0.1rem 0.4rem;
+            }
+            .filter-row {
+                gap: 0.2rem 0.6rem;
+            }
+            .hero-meta {
+                gap: 0.3rem 1rem;
+                font-size: 0.65rem;
+            }
+            .whatsapp-modal {
+                padding: 1.6rem 1.2rem;
+            }
+            .bespoke {
+                padding: 1.2rem 0.8rem;
+            }
+        }
+
+        /* ----- cart ----- */
+        .cart-float {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 50;
+            background: var(--gold);
+            color: var(--ink);
+            border: none;
+            border-radius: 60px;
+            padding: 10px 20px;
+            font-family: 'Jost', sans-serif;
+            font-weight: 500;
+            font-size: 0.8rem;
+            cursor: pointer;
+            box-shadow: 0 8px 24px rgba(201, 161, 92, 0.25);
+            transition: transform 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .cart-float:hover {
+            transform: scale(1.04);
+        }
+        .cart-count {
+            background: var(--ink);
+            color: var(--cream);
+            border-radius: 50%;
+            padding: 0 6px;
+            font-size: 0.7rem;
+            min-width: 20px;
+            text-align: center;
+        }
+        .cart-panel {
+            position: fixed;
+            bottom: 80px;
+            right: 24px;
+            width: 340px;
+            max-height: 520px;
+            overflow-y: auto;
+            background: var(--panel);
+            border: 1px solid var(--hair);
+            border-radius: 8px;
+            padding: 1.2rem;
+            z-index: 49;
+            display: none;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.7);
+        }
+        .cart-panel.open {
+            display: block;
+        }
+        .cart-panel h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            margin-bottom: 0.6rem;
+            color: var(--gold);
+            border-bottom: 1px solid rgba(201, 161, 92, 0.1);
+            padding-bottom: 0.3rem;
+        }
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            padding: 0.2rem 0;
+            border-bottom: 1px solid rgba(201, 161, 92, 0.05);
+        }
+        .cart-total {
+            margin-top: 0.5rem;
+            font-weight: 400;
+            color: var(--cream);
+            text-align: right;
+            border-top: 1px solid rgba(201, 161, 92, 0.1);
+            padding-top: 0.4rem;
+        }
+        .cart-delivery {
+            font-size: 0.75rem;
+            color: var(--grey);
+            text-align: right;
+        }
+        .cart-form {
+            margin-top: 0.6rem;
+        }
+        .cart-form input {
+            width: 100%;
+            background: var(--ink);
+            border: 1px solid var(--hair);
+            color: var(--cream);
+            padding: 0.4rem 0.6rem;
+            border-radius: 4px;
+            font-family: 'Jost', sans-serif;
+            font-size: 0.75rem;
+            margin-bottom: 0.3rem;
+        }
+        .cart-form input:focus {
+            border-color: var(--gold);
+            outline: none;
+        }
+        .cart-form label {
+            font-size: 0.65rem;
+            color: var(--grey);
+            letter-spacing: 0.1em;
+            display: block;
+            margin-top: 0.2rem;
+        }
+        .cart-order-btn {
+            background: #25D366;
+            border: none;
+            color: white;
+            padding: 10px 16px;
+            border-radius: 60px;
+            font-family: 'Jost', sans-serif;
+            font-weight: 500;
+            font-size: 0.85rem;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 0.6rem;
+            transition: opacity 0.2s;
+        }
+        .cart-order-btn:hover {
+            opacity: 0.85;
+        }
+        .cart-empty {
+            color: var(--grey);
+            font-size: 0.8rem;
+            padding: 0.5rem 0;
+        }
+        @media (max-width: 600px) {
+            .cart-panel {
+                right: 10px;
+                width: 290px;
+                bottom: 72px;
+            }
+            .cart-float {
+                padding: 8px 14px;
+                font-size: 0.7rem;
+                bottom: 14px;
+                right: 14px;
+            }
+        }
+
+        /* order number display */
+        .order-number-display {
+            font-size: 0.75rem;
+            color: var(--gold);
+            text-align: center;
+            margin: 0.4rem 0;
+            letter-spacing: 0.1em;
+            border-top: 1px solid rgba(201, 161, 92, 0.1);
+            padding-top: 0.4rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ----- WHATSAPP OVERLAY (Option 2) ----- -->
+    <div class="whatsapp-overlay" id="whatsappOverlay">
+        <div class="whatsapp-modal">
+            <h2>✦ Enigma</h2>
+            <p>Chat with us on WhatsApp for<br />
+                <span style="color:var(--gold);">exclusive pricing &amp; personalized recommendations</span>
+            </p>
+            <a href="https://wa.me/971588159435?text=Hello%20Enigma%20Collections!%20I'd%20like%20to%20know%20more%20about%20your%20fragrances."
+            target="_blank"
+            class="whatsapp-btn-lg"
+            onclick="document.getElementById('whatsappOverlay').classList.add('hidden')">
+            💬 Chat Now
+        </a>
+        <button class="skip-link" onclick="document.getElementById('whatsappOverlay').classList.add('hidden')">
+            Continue browsing →
+        </button>
+    </div>
+</div>
+
+<div class="container">
+
+    <!-- HERO -->
+    <header class="hero">
+        <div class="hero-glow"></div>
+        <!-- sprig watermark -->
+        <svg class="sprig-bg" viewBox="0 0 200 80" fill="none" stroke="#c9a15c" stroke-width="0.6" stroke-linecap="round">
+            <path d="M20 40 Q40 10 70 25 Q100 40 130 15 Q160 -5 180 20 Q190 35 195 45" />
+            <path d="M50 30 Q54 18 46 10 Q38 2 32 12 Q26 22 38 28" />
+            <path d="M120 20 Q124 8 116 0 Q108 -6 102 6 Q96 18 108 24" />
+        </svg>
+        <div class="hero-eyebrow">Dubai · The Collection</div>
+        <h1 class="hero-wordmark serif">ENIGMA <span class="gold">Collections</span></h1>
+        <div class="hero-sub">Inspired Fragrance House</div>
+        <div class="hero-tagline serif">“Luxury You Can Afford to Wear Every Day”</div>
+        <div class="hero-meta">
+            <span><a href="https://facebook.com/enigmacollections" target="_blank">Facebook: Enigma Collections</a></span>
+            <span><a href="mailto:enigmasc@gmail.com">enigmasc@gmail.com</a></span>
+            <span><a href="https://instagram.com/enigmacollections.ae" target="_blank">@enigmacollections.ae</a></span>
+            <span><a href="https://wa.me/971588159435" target="_blank">📱 +971 58 815 9435</a></span>
+        </div>
+    </header>
+
+    <!-- INTRO -->
+    <section class="intro">
+        <p class="lead serif">“Great perfumery has always been an act of translation — turning a memory, a mood, a place into something you can wear.”</p>
+        <p class="body-text">Enigma Collections curates that same language, distilled and reintroduced for the UAE and GCC, without the flagship price tag. What follows is our full atelier, catalogued the way the maisons do.</p>
+    </section>
+
+    <!-- STICKY FILTER -->
+    <nav class="filter-sticky" id="filterNav">
+        <div class="filter-row" id="genderRow">
+            <button class="filter-btn active" data-gender="All">All</button>
+            <button class="filter-btn" data-gender="For Her">For Her</button>
+            <button class="filter-btn" data-gender="For Him">For Him</button>
+            <button class="filter-btn" data-gender="For You">For You</button>
+        </div>
+        <div class="filter-row">
+            <span class="filter-label">Shop by Brand</span>
+            <select class="filter-select" id="brandSelect">
+                <option value="All">All Brands</option>
+            </select>
+        </div>
+    </nav>
+
+    <!-- CATALOGUE -->
+    <div id="catalogueContainer">
+        <!-- For Her -->
+        <section class="catalogue-section" id="section-her" data-gender="For Her">
+            <div class="section-header">
+                <div class="sprig-divider"><svg viewBox="0 0 60 12" stroke="#c9a15c" stroke-width="0.4" stroke-linecap="round"><path d="M2 6 Q12 2 22 6 Q32 10 42 4 Q52 -2 58 4" /></svg></div>
+                <h2 class="section-title serif rose">For Her</h2>
+                <span class="section-count" id="count-her">0</span>
+            </div>
+            <div class="card-grid" id="grid-her"></div>
+        </section>
+
+        <!-- For Him -->
+        <section class="catalogue-section" id="section-him" data-gender="For Him">
+            <div class="section-header">
+                <div class="sprig-divider"><svg viewBox="0 0 60 12" stroke="#c9a15c" stroke-width="0.4" stroke-linecap="round"><path d="M2 6 Q12 2 22 6 Q32 10 42 4 Q52 -2 58 4" /></svg></div>
+                <h2 class="section-title serif steel">For Him</h2>
+                <span class="section-count" id="count-him">0</span>
+            </div>
+            <div class="card-grid" id="grid-him"></div>
+        </section>
+
+        <!-- For You -->
+        <section class="catalogue-section" id="section-you" data-gender="For You">
+            <div class="section-header">
+                <div class="sprig-divider"><svg viewBox="0 0 60 12" stroke="#c9a15c" stroke-width="0.4" stroke-linecap="round"><path d="M2 6 Q12 2 22 6 Q32 10 42 4 Q52 -2 58 4" /></svg></div>
+                <h2 class="section-title serif gold">For You</h2>
+                <span class="section-count" id="count-you">0</span>
+            </div>
+            <div class="card-grid" id="grid-you"></div>
+        </section>
+    </div>
+
+    <!-- BESPOKE - clickable to WhatsApp -->
+    <a href="https://wa.me/971588159435?text=Hello%20Enigma%20Collections!%20I'd%20like%20to%20request%20a%20scent%20not%20listed." target="_blank" style="text-decoration:none; display:block;">
+        <div class="bespoke">
+            <div class="label">By Request</div>
+            <p class="serif">“Not on the shelf doesn’t mean out of reach. If your signature scent isn’t listed here, we’ll source it for you — just send us the name.”</p>
+        </div>
+    </a>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <svg class="sprig" viewBox="0 0 120 24" fill="none" stroke="#c9a15c" stroke-width="0.5" stroke-linecap="round">
+            <path d="M6 12 Q18 2 30 8 Q42 14 54 4 Q66 -4 78 6 Q90 14 102 4 Q114 -4 120 6" />
+            <path d="M24 8 Q26 2 20 0 Q14 -2 12 4 Q10 10 18 10" />
+            <path d="M68 6 Q70 0 64 -2 Q58 -4 56 2 Q54 8 62 8" />
+        </svg>
+        <h3 class="serif gold">Find Your Enigma Scent Today</h3>
+        <p class="sub">DM or WhatsApp to order · Delivery across the UAE &amp; GCC</p>
+        <div class="handle">
+            <a href="https://instagram.com/enigmacollections.ae" target="_blank">@enigmacollections.ae</a> ·
+            <a href="https://wa.me/971588159435" target="_blank">WhatsApp +971 58 815 9435</a>
+        </div>
+    </footer>
+</div>
+
+<!-- CART FLOATING -->
+<button class="cart-float" id="cartToggle">
+    🛒 Cart <span class="cart-count" id="cartCount">0</span>
+</button>
+<div class="cart-panel" id="cartPanel">
+    <h4>Your Order Summary</h4>
+    <div id="cartItems"><p class="cart-empty">Your cart is empty.</p></div>
+    <div class="cart-delivery" id="deliveryLine">Delivery: AED 25</div>
+    <div class="cart-total" id="cartTotal">Total: AED 0</div>
+
+    <div class="cart-form">
+        <label>Full Name</label>
+        <input type="text" id="customerName" placeholder="e.g. Ahmed Al Maktoum" />
+        <label>Contact Number</label>
+        <input type="text" id="customerPhone" placeholder="+971 50 123 4567" />
+        <label>Delivery Address</label>
+        <input type="text" id="customerAddress" placeholder="Dubai, UAE" />
+    </div>
+
+    <div class="order-number-display" id="orderNumberDisplay"></div>
+
+    <button class="cart-order-btn" id="orderWhatsApp">📦 Order via WhatsApp</button>
+</div>
+
+<script>
+    (function() {
+        // ---------- DATA ----------
+        const fragrances = [
+            // For Her
+            { sku: "001", brand: "Jo Malone", name: "Peony & Blush Suede", gender: "For Her",
+                note: "Delicate peony, red apple, and blush suede — romantic and fresh." },
+            { sku: "002", brand: "YSL", name: "Libre", gender: "For Her",
+                note: "Lavender, orange blossom, vanilla — bold freedom." },
+            { sku: "003", brand: "Bvlgari", name: "Omnia Amethyste", gender: "For Her",
+                note: "Pink grapefruit, iris, Bulgarian rose — elegant everyday." },
+            { sku: "004", brand: "Versace", name: "Bright Crystal", gender: "For Her",
+                note: "Pomegranate, peony, musk — luminous and chic." },
+            { sku: "005", brand: "Versace", name: "Crystal Noir", gender: "For Her",
+                note: "Gardenia, orange blossom, amber — mysterious and sensual." },
+            { sku: "006", brand: "Clinique", name: "Happy", gender: "For Her",
+                note: "Citrus, lily, freesia — joyful freshness." },
+            { sku: "007", brand: "Jo Malone", name: "Nectarine Blossom & Honey", gender: "For Her",
+                note: "Nectarine, honey, spring blossoms — playful elegance." },
+            { sku: "008", brand: "Jo Malone", name: "English Pear & Freesia", gender: "For Her",
+                note: "Ripe pear, white freesia, patchouli — refined balance." },
+            { sku: "009", brand: "Dior", name: "Miss Dior", gender: "For Her",
+                note: "Centifolia rose, peony, musk — timeless femininity." },
+            { sku: "010", brand: "YSL", name: "Black Opium", gender: "For Her",
+                note: "Coffee, vanilla, white flowers — bold and addictive." },
+            { sku: "011", brand: "Dolce & Gabbana", name: "Light Blue", gender: "For Her",
+                note: "Sicilian lemon, apple, cedar — Mediterranean breeze." },
+            { sku: "012", brand: "Lacoste", name: "Touch of Pink", gender: "For Her",
+                note: "Peach, jasmine, vanilla — youthful charm." },
+            { sku: "013", brand: "Carolina Herrera", name: "Good Girl", gender: "For Her",
+                note: "Tonka bean, jasmine, cocoa — confident elegance." },
+            { sku: "014", brand: "Victoria's Secret", name: "Bombshell", gender: "For Her",
+                note: "Passion fruit, grapefruit, peony — bright and playful." },
+            { sku: "015", brand: "Prada", name: "Candy", gender: "For Her",
+                note: "Caramel, vanilla, musk — warm and luxurious." },
+            { sku: "016", brand: "Dior", name: "Hypnotic Poison", gender: "For Her",
+                note: "Vanilla, almond, jasmine — deeply alluring." },
+            { sku: "017", brand: "Chanel", name: "Chance", gender: "For Her",
+                note: "Pink pepper, jasmine, patchouli — modern timeless." },
+            { sku: "018", brand: "Maison Francis Kurkdjian", name: "Baccarat Rouge 540", gender: "For Her",
+                note: "Saffron, jasmine, amberwood — iconic masterpiece." },
+            { sku: "019", brand: "Narciso Rodriguez", name: "For Her", gender: "For Her",
+                note: "Rose, musk, amber — intimate sophistication." },
+            { sku: "020", brand: "Jo Malone", name: "Wood Sage & Sea Salt", gender: "For Her",
+                note: "Sea salt, sage, ambrette — windswept coast." },
+            { sku: "021", brand: "Paco Rabanne", name: "Lady Million", gender: "For Her",
+                note: "Raspberry, orange blossom, honey — glamorous charm." },
+            { sku: "022", brand: "Dior", name: "Purple Oud", gender: "For Her",
+                note: "Oud, spices, florals — opulent and mysterious." },
+            { sku: "023", brand: "Parfums de Marly", name: "Delina Exclusif", gender: "For Her",
+                note: "Turkish rose, pear, vanilla — velvety luxury." },
+            { sku: "024", brand: "Lanvin", name: "Éclat d'Arpège", gender: "For Her",
+                note: "Lilac, peach blossom, musk — delicate grace." },
+            { sku: "025", brand: "Creed", name: "Aventus for Her", gender: "For Her",
+                note: "Green apple, bergamot, rose — confident modern." },
+            { sku: "026", brand: "Gucci", name: "Flora", gender: "For Her",
+                note: "Peony, citrus, sandalwood — radiant and chic." },
+            { sku: "027", brand: "Escada", name: "Taj Sunset", gender: "For Her",
+                note: "Mango, nectarine, coconut — tropical sunshine." },
+            { sku: "028", brand: "Giorgio Armani", name: "Sì", gender: "For Her",
+                note: "Blackcurrant, rose, vanilla — sophisticated confidence." },
+            { sku: "029", brand: "Louis Vuitton", name: "L'Immensité", gender: "For Her",
+                note: "Grapefruit, ginger, amber — refined invigoration." },
+            { sku: "030", brand: "Davidoff", name: "Cool Water Woman", gender: "For Her",
+                note: "Melon, pineapple, lotus — clean ocean serenity." },
+            { sku: "031", brand: "Dolce & Gabbana", name: "The One", gender: "For Her",
+                note: "Bergamot, peach, vanilla — warm and sensual." },
+            { sku: "032", brand: "Chloé", name: "Love Story", gender: "For Her",
+                note: "Orange blossom, jasmine, cedar — Parisian romance." },
+            { sku: "033", brand: "Dior", name: "Oud & Rose", gender: "For Her",
+                note: "Damask rose, oud, smoky woods — bold elegance." },
+            { sku: "034", brand: "Prada", name: "Paradoxe", gender: "For Her",
+                note: "Neroli, jasmine, amber — contemporary versatility." },
+            { sku: "035", brand: "Versace", name: "Eros Pour Femme", gender: "For Her",
+                note: "Lemon, jasmine, sandalwood — bold and feminine." },
+            { sku: "036", brand: "Parfums de Marly", name: "Valaya", gender: "For Her",
+                note: "White florals, musk, woods — understated luxury." },
+            { sku: "037", brand: "Louis Vuitton", name: "Stellar Times", gender: "For Her",
+                note: "Orange blossom, amber, woods — radiant and luminous." },
+            { sku: "038", brand: "Kayali", name: "Vanilla 28", gender: "For Her",
+                note: "Vanilla, brown sugar, amber — warm and addictive." },
+            { sku: "039", brand: "Burberry", name: "Weekend", gender: "For Her",
+                note: "Mandarin, peach blossom, cedar — relaxed elegance." },
+            { sku: "040", brand: "Burberry", name: "Body", gender: "For Her",
+                note: "Rose, peach, sandalwood — warm refined impression." },
+            { sku: "041", brand: "Burberry", name: "Goddess", gender: "For Her",
+                note: "Vanilla, lavender, cacao — empowering comfort." },
+            { sku: "042", brand: "Lancôme", name: "Idôle", gender: "For Her",
+                note: "Rose, jasmine, white musk — fresh and confident." },
+            { sku: "043", brand: "Le Labo", name: "Santal 33", gender: "For Her",
+                note: "Sandalwood, cedar, leather — distinctive cult classic." },
+            { sku: "045", brand: "Lacoste", name: "Femme", gender: "For Her",
+                note: "Freesia, jasmine, sandalwood — refined femininity." },
+            { sku: "046", brand: "Mugler", name: "Angel Nova", gender: "For Her",
+                note: "Raspberry, rose, Akigalawood — bold and radiant." },
+            { sku: "047", brand: "Lancôme", name: "Idôle Nectar", gender: "For Her",
+                note: "Rose, vanilla, caramel — gourmand floral." },
+            { sku: "048", brand: "Valentino", name: "Born in Roma Donna", gender: "For Her",
+                note: "Jasmine, vanilla, cashmeran — couture glamour." },
+            // For Him
+            { sku: "050", brand: "Dior", name: "Sauvage", gender: "For Him",
+                note: "Bergamot, pepper, ambroxan — bold and refined." },
+            { sku: "051", brand: "Paco Rabanne", name: "One Million", gender: "For Him",
+                note: "Mandarin, cinnamon, leather — warm and daring." },
+            { sku: "052", brand: "Clinique", name: "Happy for Men", gender: "For Him",
+                note: "Lime, mandarin, cedar — energetic and clean." },
+            { sku: "053", brand: "Hugo Boss", name: "Boss Bottled", gender: "For Him",
+                note: "Apple, cinnamon, sandalwood — timeless confidence." },
+            { sku: "054", brand: "Montblanc", name: "Legend", gender: "For Him",
+                note: "Lavender, bergamot, tonka — clean and elegant." },
+            { sku: "055", brand: "Davidoff", name: "Cool Water", gender: "For Him",
+                note: "Mint, lavender, cedar — crisp oceanic." },
+            { sku: "056", brand: "Polo Sport", name: "Polo Sport", gender: "For Him",
+                note: "Citrus, mint, sea notes — active energy." },
+            { sku: "057", brand: "Creed", name: "Aventus", gender: "For Him",
+                note: "Pineapple, birch, patchouli — legendary success." },
+            { sku: "058", brand: "Xerjoff", name: "Erba Pura", gender: "For Him",
+                note: "Citrus, fruits, vanilla — bright and versatile." },
+            { sku: "059", brand: "Paco Rabanne", name: "Invictus", gender: "For Him",
+                note: "Grapefruit, marine, ambergris — victorious fresh." },
+            { sku: "060", brand: "Lacoste", name: "Blanc", gender: "For Him",
+                note: "Grapefruit, rosemary, suede — clean sophistication." },
+            { sku: "061", brand: "Tom Ford", name: "Oud Wood", gender: "For Him",
+                note: "Oud, cardamom, vanilla — timeless elegance." },
+            { sku: "062", brand: "Chanel", name: "Bleu de Chanel", gender: "For Him",
+                note: "Grapefruit, incense, cedar — refined modern." },
+            { sku: "063", brand: "Dior", name: "Fahrenheit", gender: "For Him",
+                note: "Violet leaf, leather, nutmeg — bold character." },
+            { sku: "064", brand: "Giorgio Armani", name: "Acqua di Giò", gender: "For Him",
+                note: "Bergamot, marine, patchouli — Mediterranean spirit." },
+            { sku: "065", brand: "Ralph Lauren", name: "Polo Blue", gender: "For Him",
+                note: "Melon, basil, suede — refreshing sophistication." },
+            { sku: "066", brand: "Versace", name: "Eros", gender: "For Him",
+                note: "Mint, green apple, tonka — bold and seductive." },
+            { sku: "068", brand: "Tom Ford", name: "Ombre Leather", gender: "For Him",
+                note: "Black leather, jasmine, amber — bold depth." },
+            // For You
+            { sku: "044", brand: "Creed", name: "Silver Mountain Water", gender: "For You",
+                note: "Bergamot, green tea, musk — crisp alpine air." },
+            { sku: "067", brand: "Diptyque", name: "Fleur de Peau", gender: "For You",
+                note: "Iris, ambrette, pink pepper — velvety intimacy." }
+        ];
+
+        // ---------- STATE ----------
+        let cart = [];
+        let currentGender = 'All';
+        let currentBrand = 'All';
+        const DELIVERY_FEE = 25;
+        const PRICE_50ML = 35;
+        const PRICE_100ML = 60;
+
+        // ---------- DOM refs ----------
+        const grids = {
+            'For Her': document.getElementById('grid-her'),
+            'For Him': document.getElementById('grid-him'),
+            'For You': document.getElementById('grid-you')
+        };
+        const sections = {
+            'For Her': document.getElementById('section-her'),
+            'For Him': document.getElementById('section-him'),
+            'For You': document.getElementById('section-you')
+        };
+        const countEls = {
+            'For Her': document.getElementById('count-her'),
+            'For Him': document.getElementById('count-him'),
+            'For You': document.getElementById('count-you')
+        };
+        const brandSelect = document.getElementById('brandSelect');
+        const genderBtns = document.querySelectorAll('#genderRow .filter-btn');
+        const cartPanel = document.getElementById('cartPanel');
+        const cartToggle = document.getElementById('cartToggle');
+        const cartItemsEl = document.getElementById('cartItems');
+        const cartCountEl = document.getElementById('cartCount');
+        const cartTotalEl = document.getElementById('cartTotal');
+        const deliveryLine = document.getElementById('deliveryLine');
+        const orderBtn = document.getElementById('orderWhatsApp');
+        const customerName = document.getElementById('customerName');
+        const customerPhone = document.getElementById('customerPhone');
+        const customerAddress = document.getElementById('customerAddress');
+        const orderNumberDisplay = document.getElementById('orderNumberDisplay');
+
+        // ---------- TELEGRAM NOTIFY ----------
+        function notifyTelegram(message) {
+            try {
+                fetch('/.netlify/functions/notify', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message }),
+                    keepalive: true
+                }).catch(() => {});
+            } catch (err) {
+                // fail silently - never block the customer's order
+            }
+        }
+
+        // ---------- HELPERS ----------
+        function getUniqueBrands() {
+            const brands = fragrances.map(f => f.brand);
+            return [...new Set(brands)].sort();
+        }
+
+        function getGenderBadgeClass(gender) {
+            if (gender === 'For Her') return 'rose-badge';
+            if (gender === 'For Him') return 'steel-badge';
+            return '';
+        }
+
+        function generateOrderNumber(name) {
+            // First 4 letters of name (uppercase), padded with 'X' if shorter
+            const namePart = name.trim().toUpperCase().replace(/[^A-Z]/g, '').slice(0, 4);
+            const paddedName = namePart.padEnd(4, 'X');
+
+            // Date: YYMMDD
+            const now = new Date();
+            const year = String(now.getFullYear()).slice(2);
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const day = String(now.getDate()).padStart(2, '0');
+            const datePart = year + month + day;
+
+            return paddedName + '-' + datePart;
+        }
+
+        // ---------- RENDER ----------
+        function renderCatalogue() {
+            const allFrags = fragrances.filter(f => {
+                const genderMatch = currentGender === 'All' || f.gender === currentGender;
+                const brandMatch = currentBrand === 'All' || f.brand === currentBrand;
+                return genderMatch && brandMatch;
+            });
+
+            const grouped = { 'For Her': [], 'For Him': [], 'For You': [] };
+            allFrags.forEach(f => {
+                if (grouped[f.gender]) grouped[f.gender].push(f);
+            });
+
+            for (const [gender, list] of Object.entries(grouped)) {
+                const grid = grids[gender];
+                grid.innerHTML = '';
+                list.forEach(f => {
+                    const card = document.createElement('div');
+                    card.className = 'product-card';
+                    card.dataset.sku = f.sku;
+                    const badgeClass = getGenderBadgeClass(f.gender);
+                    const whatsappMsg =
+                        `Hello Enigma Collections! I'd like to order: ${f.name} (100ml) – AED ${PRICE_100ML}.`;
+                    card.innerHTML = `
+                        <div class="card-top">
+                            <div class="card-sku">No. ${f.sku.padStart(3, '0')}</div>
+                            <div class="card-badge ${badgeClass}">${f.gender}</div>
+                        </div>
+                        <div class="card-inspired">Inspired by ${f.brand}</div>
+                        <div class="card-name serif">${f.name}</div>
+                        <div class="card-note">“${f.note}”</div>
+                        <div class="card-divider"></div>
+                        <div class="card-footer">
+                            <div class="card-price">50 ml – <span>AED ${PRICE_50ML}</span> · 100 ml – <span>AED ${PRICE_100ML}</span></div>
+                            <div class="card-actions">
+                                <select class="size-select" data-sku="${f.sku}">
+                                    <option value="50">50 ml</option>
+                                    <option value="100" selected>100 ml</option>
+                                </select>
+                                <button class="add-btn" data-sku="${f.sku}">Add to Cart</button>
+                                <a href="https://wa.me/971588159435?text=${encodeURIComponent(whatsappMsg)}" target="_blank" class="whatsapp-order-btn" data-notify-name="${f.name}" data-notify-brand="${f.brand}">Order</a>
+                            </div>
+                        </div>
+                    `;
+                    grid.appendChild(card);
+
+                    // Silent Telegram alert the instant "Order" is clicked (doesn't block WhatsApp opening)
+                    card.querySelector('.whatsapp-order-btn').addEventListener('click', function() {
+                        const sizeSelect = card.querySelector('.size-select');
+                        const size = sizeSelect ? sizeSelect.value : '100';
+                        const price = size === '50' ? PRICE_50ML : PRICE_100ML;
+                        notifyTelegram(
+                            `🛍️ *Order button clicked*\nProduct: ${this.dataset.notifyName} (Inspired by ${this.dataset.notifyBrand})\nSize: ${size}ml\nPrice: AED ${price}`
+                        );
+                    });
+
+                    // Add to cart listener (uses selected size)
+                    card.querySelector('.add-btn').addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        const sku = this.dataset.sku;
+                        const frag = fragrances.find(f => f.sku === sku);
+                        if (frag) {
+                            const sizeSelect = card.querySelector('.size-select');
+                            const size = sizeSelect ? sizeSelect.value : '100';
+                            cart.push({ ...frag, size: size });
+                            updateCartUI();
+                        }
+                    });
+                });
+
+                countEls[gender].textContent = `${list.length} SKU`;
+                const section = sections[gender];
+                if (list.length === 0) {
+                    section.classList.add('hidden-section');
+                } else {
+                    section.classList.remove('hidden-section');
+                }
+            }
+        }
+
+        // ---------- FILTER ----------
+        function applyFilters() {
+            genderBtns.forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.gender === currentGender);
+            });
+            brandSelect.value = currentBrand;
+            renderCatalogue();
+        }
+
+        // ---------- CART ----------
+        function updateCartUI() {
+            const count = cart.length;
+            cartCountEl.textContent = count;
+
+            if (count === 0) {
+                cartItemsEl.innerHTML = '<p class="cart-empty">Your cart is empty.</p>';
+                deliveryLine.style.display = 'none';
+                cartTotalEl.textContent = 'Total: AED 0';
+                orderNumberDisplay.textContent = '';
+                return;
+            }
+
+            const grouped = {};
+            cart.forEach(item => {
+                const key = item.sku + (item.size || '100');
+                if (!grouped[key]) grouped[key] = { ...item, qty: 0 };
+                grouped[key].qty += 1;
+            });
+            const uniqueItems = Object.values(grouped);
+            let html = '';
+            let subtotal = 0;
+            uniqueItems.forEach(item => {
+                const price = item.size === '50' ? PRICE_50ML : PRICE_100ML;
+                const total = price * item.qty;
+                subtotal += total;
+                html += `
+                            <div class="cart-item">
+                                <span>${item.name} (${item.size || 100}ml × ${item.qty})</span>
+                                <span>AED ${total}</span>
+                            </div>
+                        `;
+            });
+
+            cartItemsEl.innerHTML = html;
+            const totalWithDelivery = subtotal + (count > 0 ? DELIVERY_FEE : 0);
+            deliveryLine.style.display = count > 0 ? 'block' : 'none';
+            deliveryLine.textContent = `Delivery: AED ${DELIVERY_FEE}`;
+            cartTotalEl.textContent = `Total: AED ${totalWithDelivery}`;
+
+            // Generate order number if name is filled
+            const name = customerName.value.trim();
+            if (name && count > 0) {
+                const orderNum = generateOrderNumber(name);
+                orderNumberDisplay.textContent = `Order #: ${orderNum}`;
+            } else {
+                orderNumberDisplay.textContent = '';
+            }
+        }
+
+        // ---------- ORDER WHATSAPP ----------
+        function sendOrderWhatsApp() {
+            if (cart.length === 0) {
+                alert('Your cart is empty.');
+                return;
+            }
+
+            const name = customerName.value.trim() || 'Not provided';
+            const phone = customerPhone.value.trim() || 'Not provided';
+            const address = customerAddress.value.trim() || 'Not provided';
+
+            // Generate order number
+            const orderNum = generateOrderNumber(name);
+
+            const grouped = {};
+            cart.forEach(item => {
+                const key = item.sku + (item.size || '100');
+                if (!grouped[key]) grouped[key] = { ...item, qty: 0 };
+                grouped[key].qty += 1;
+            });
+
+            let msg = '🛍️ *ENIGMA COLLECTIONS — NEW ORDER*%0A';
+            msg += `📋 *Order #:* ${orderNum}%0A%0A`;
+            msg += `👤 *Name:* ${name}%0A`;
+            msg += `📱 *Phone:* ${phone}%0A`;
+            msg += `📍 *Address:* ${address}%0A%0A`;
+            msg += '*Order Summary:*%0A';
+
+            let subtotal = 0;
+            Object.values(grouped).forEach(item => {
+                const price = item.size === '50' ? PRICE_50ML : PRICE_100ML;
+                const total = price * item.qty;
+                subtotal += total;
+                msg += `- ${item.name} (${item.size || 100}ml × ${item.qty}) × AED ${price} = AED ${total}%0A`;
+            });
+
+            const totalWithDelivery = subtotal + DELIVERY_FEE;
+            msg += `%0A📦 *Delivery:* AED ${DELIVERY_FEE}%0A`;
+            msg += `💰 *Total:* AED ${totalWithDelivery}%0A%0A`;
+            msg += `_Thank you for choosing Enigma Collections._`;
+
+            // Silent Telegram alert with the full order, sent the instant checkout is clicked
+            let telegramMsg = `🛒 *CART CHECKOUT*\nOrder #: ${orderNum}\nName: ${name}\nPhone: ${phone}\nAddress: ${address}\n\n`;
+            Object.values(grouped).forEach(item => {
+                const price = item.size === '50' ? PRICE_50ML : PRICE_100ML;
+                telegramMsg += `- ${item.name} (${item.size || 100}ml x${item.qty}) = AED ${price * item.qty}\n`;
+            });
+            telegramMsg += `\nTotal: AED ${totalWithDelivery}`;
+            notifyTelegram(telegramMsg);
+
+            const phoneNumber = '971588159435';
+            window.open(`https://wa.me/${phoneNumber}?text=${msg}`, '_blank');
+        }
+
+        // ---------- INIT ----------
+        function init() {
+            const brands = getUniqueBrands();
+            brandSelect.innerHTML = '<option value="All">All Brands</option>';
+            brands.forEach(b => {
+                const opt = document.createElement('option');
+                opt.value = b;
+                opt.textContent = b;
+                brandSelect.appendChild(opt);
+            });
+
+            genderBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    currentGender = this.dataset.gender;
+                    applyFilters();
+                });
+            });
+
+            brandSelect.addEventListener('change', function() {
+                currentBrand = this.value;
+                applyFilters();
+            });
+
+            cartToggle.addEventListener('click', function(e) {
+                e.stopPropagation();
+                cartPanel.classList.toggle('open');
+            });
+            document.addEventListener('click', function(e) {
+                if (!cartPanel.contains(e.target) && e.target !== cartToggle) {
+                    cartPanel.classList.remove('open');
+                }
+            });
+
+            // Update order number when name changes
+            customerName.addEventListener('input', updateCartUI);
+
+            orderBtn.addEventListener('click', sendOrderWhatsApp);
+
+            applyFilters();
+            updateCartUI();
+        }
+
+        init();
+    })();
+</script>
+</body>
+</html>
